@@ -370,7 +370,7 @@ quarter, and ISO week number for each date.</h3>
 <pre class="r"><code># Generate a sequence of dates from Jan 1, 2015, to Dec 31, 2025, every two months
 dates &lt;- seq(ymd(&quot;2015-01-01&quot;), ymd(&quot;2025-12-31&quot;), by = &quot;2 months&quot;)
 
-# Create a tibble and extract components
+# Create a tibble and extract year, quarter, and ISO week number
 date_tbl &lt;- tibble(
   date = dates,
   year = year(dates),
@@ -395,11 +395,27 @@ print(date_tbl)</code></pre>
 ## # ℹ 56 more rows</code></pre>
 </div>
 </div>
-<div id="exercise-2-complex-data-arithmetic" class="section level2">
-<h2>Exercise 2: Complex Data Arithmetic</h2>
-<div id="question-2" class="section level3">
-<h3>Question 2:</h3>
-<pre class="r"><code># R code here</code></pre>
+<div id="exercise-2-complex-date-arithmetic" class="section level2">
+<h2>Exercise 2: Complex Date Arithmetic</h2>
+<div id="question-2-given-the-following-dates-compute-the-difference-in-months-and-weeks-between-each-consecutive-pair." class="section level3">
+<h3>Question 2: Given the following dates, compute the difference in
+months and weeks between each consecutive pair.</h3>
+<pre class="r"><code>sample_dates &lt;- c(&quot;2018-03-15&quot;, &quot;2020-07-20&quot;, &quot;2023-01-10&quot;, &quot;2025-09-05&quot;)
+
+# Convert to dates
+sample_dates &lt;- ymd(sample_dates)
+
+# Calculate differences between consecutive pairs of dates
+date_diff &lt;- diff(sample_dates)
+
+# Convert differences to months and weeks
+months_diff &lt;- as.period(date_diff, unit = &quot;month&quot;)
+weeks_diff &lt;- as.period(date_diff, unit = &quot;week&quot;)
+
+months_diff</code></pre>
+<pre><code>## [1] &quot;858d 0H 0M 0S&quot; &quot;904d 0H 0M 0S&quot; &quot;969d 0H 0M 0S&quot;</code></pre>
+<pre class="r"><code>weeks_diff</code></pre>
+<pre><code>## [1] &quot;858d 0H 0M 0S&quot; &quot;904d 0H 0M 0S&quot; &quot;969d 0H 0M 0S&quot;</code></pre>
 </div>
 </div>
 <div id="exercise-3-higher-order-functions-with-purrr" class="section level2">

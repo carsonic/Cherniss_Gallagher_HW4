@@ -30,11 +30,23 @@ date_tbl <- tibble(
 print(date_tbl)
 ```
 
-
-## Exercise 2: Complex Data Arithmetic
-### Question 2: 
+## Exercise 2: Complex Date Arithmetic
+### Question 2: Given the following dates, compute the difference in months and weeks between each consecutive pair.
 ```{r question 2}
-# R code here
+sample_dates <- c("2018-03-15", "2020-07-20", "2023-01-10", "2025-09-05")
+
+# Convert to dates
+sample_dates <- ymd(sample_dates)
+
+# Calculate differences between consecutive pairs of dates
+date_diff <- diff(sample_dates)
+
+# Convert differences to months and weeks
+months_diff <- as.period(date_diff, unit = "month")
+weeks_diff <- as.period(date_diff, unit = "week")
+
+months_diff
+weeks_diff
 ```
 
 ## Exercise 3: Higher-Order Functions with purrr
