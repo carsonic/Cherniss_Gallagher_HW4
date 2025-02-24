@@ -1,9 +1,13 @@
 ---
 title: "Homework: lubridate and purrr"
 author: "Carson Cherniss and Ainsley Gallagher"
-date: "2025-02-24"
-format: pdf
+date: "2025-02-25"
+output: pdf_document
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+```
+
 ### Load Packages: 
 ```{r loading-packages, message=FALSE, warning=FALSE}
 library(tidyverse)
