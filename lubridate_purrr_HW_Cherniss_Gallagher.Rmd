@@ -1,0 +1,35 @@
+---
+title: "Homework: lubridate and purrr"
+author: "Carson Cherniss and Ainsley Gallagher"
+date: "2025-02-24"
+format: pdf
+---
+### Load Packages: 
+```{r loading-packages, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+## Exercise 1: Advanced date manipulation with lubridate
+### Question 1:
+```{r question 1}
+# R code here
+```
+
+
+## Exercise 2: Complex Data Arithmetic
+### Question 2: 
+```{r question 2}
+# R code here
+```
+
+## Exercise 3: Higher-Order Functions with purrr
+### Question 3: 
+```{r question 3}
+# R code here
+```
+
+## Exercise 4: Combining lubridate and purrr
+### Question 4:
+```{r question 4}
+# R code here
+```
