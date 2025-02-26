@@ -418,19 +418,36 @@ months_diff</code></pre>
 <pre><code>## [1] &quot;858d 0H 0M 0S&quot; &quot;904d 0H 0M 0S&quot; &quot;969d 0H 0M 0S&quot;</code></pre>
 </div>
 </div>
-<div id="exercise-3-higher-order-functions-with-purrr" class="section level2">
-<h2>Exercise 3: Higher-Order Functions with purrr</h2>
-<div id="question-3" class="section level3">
-<h3>Question 3:</h3>
-<pre class="r"><code># R code here</code></pre>
+<div id="question-3" class="section level1">
+<h1>Question 3</h1>
+<pre class="r"><code>lists &lt;- list(c(4, 16, 25, 36, 49), c(2.3, 5.7, 8.1, 11.4), c(10, 20, 30, 40, 50))
+
+means &lt;- map_dbl(lists, ~ mean(.x, na.rm = TRUE))
+medians &lt;- map_dbl(lists, ~ median(.x, na.rm = TRUE))
+std_devs &lt;- map_dbl(lists, ~ ifelse(length(.x) &gt; 1, sd(.x, na.rm = TRUE), NA))
+results &lt;- data.frame(
+  Mean = means,
+  Median = medians,
+  Std_Dev = std_devs
+)
+
+print(results)</code></pre>
+<pre><code>##     Mean Median  Std_Dev
+## 1 26.000   25.0 17.42125
+## 2  6.875    6.9  3.84220
+## 3 30.000   30.0 15.81139</code></pre>
 </div>
-</div>
-<div id="exercise-4-combining-lubridate-and-purrr" class="section level2">
-<h2>Exercise 4: Combining lubridate and purrr</h2>
-<div id="question-4" class="section level3">
-<h3>Question 4:</h3>
-<pre class="r"><code># R code here</code></pre>
-</div>
+<div id="question-4" class="section level1">
+<h1>Question 4</h1>
+<pre class="r"><code>datestring &lt;- list(&quot;2023-06-10&quot;, &quot;2022/12/25&quot;, &quot;15-8-2021&quot;, &quot;InvalidDate&quot;)
+
+Conversion &lt;- possibly(~ parse_date_time(.x, orders = c(&quot;ymd&quot;, &quot;mdy&quot;, &quot;dmy&quot;)), otherwise = NA)
+dates &lt;- map(datestring, Conversion)</code></pre>
+<pre><code>## Warning: All formats failed to parse. No formats found.</code></pre>
+<pre class="r"><code>monthnames &lt;- map_chr(dates, ~ ifelse(!is.na(.x), format(.x, &quot;%B&quot;), &quot;Invalid&quot;))
+
+print(monthnames)</code></pre>
+<pre><code>## [1] &quot;June&quot;     &quot;December&quot; &quot;August&quot;   &quot;Invalid&quot;</code></pre>
 </div>
 
 
