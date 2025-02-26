@@ -48,15 +48,29 @@ weeks_diff <- as.period(date_diff, unit = "week")
 months_diff
 weeks_diff
 ```
+library(purrr)
+library(lubridate)
 
-## Exercise 3: Higher-Order Functions with purrr
-### Question 3: 
-```{r question 3}
-# R code here
-```
+#Question 3
+lists <- list(c(4, 16, 25, 36, 49), c(2.3, 5.7, 8.1, 11.4), c(10, 20, 30, 40, 50))
 
-## Exercise 4: Combining lubridate and purrr
-### Question 4:
-```{r question 4}
-# R code here
+means <- map_dbl(lists, ~ mean(.x, na.rm = TRUE))
+medians <- map_dbl(lists, ~ median(.x, na.rm = TRUE))
+std_devs <- map_dbl(lists, ~ ifelse(length(.x) > 1, sd(.x, na.rm = TRUE), NA))
+results <- data.frame(
+  Mean = means,
+  Median = medians,
+  Std_Dev = std_devs
+)
+
+print(results)
+
+#Question 4
+datestring <- list("2023-06-10", "2022/12/25", "15-8-2021", "InvalidDate")
+
+Conversion <- possibly(~ parse_date_time(.x, orders = c("ymd", "mdy", "dmy")), otherwise = NA)
+dates <- map(datestring, Conversion)
+monthnames <- map_chr(dates, ~ ifelse(!is.na(.x), format(.x, "%B"), "Invalid"))
+
+print(monthnames)
 ```
