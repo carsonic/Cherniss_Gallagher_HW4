@@ -48,10 +48,12 @@ weeks_diff <- as.period(date_diff, unit = "week")
 months_diff
 weeks_diff
 ```
+```
 library(purrr)
 library(lubridate)
-
+```
 #Question 3
+```
 lists <- list(c(4, 16, 25, 36, 49), c(2.3, 5.7, 8.1, 11.4), c(10, 20, 30, 40, 50))
 
 means <- map_dbl(lists, ~ mean(.x, na.rm = TRUE))
@@ -64,8 +66,9 @@ results <- data.frame(
 )
 
 print(results)
-
+```
 #Question 4
+```
 datestring <- list("2023-06-10", "2022/12/25", "15-8-2021", "InvalidDate")
 
 Conversion <- possibly(~ parse_date_time(.x, orders = c("ymd", "mdy", "dmy")), otherwise = NA)
